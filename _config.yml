@@ -1,0 +1,12 @@
+title: 東京慢旅行｜旅行日記
+description: "用照片與文字，記錄東京及世界各地的旅行。"
+lang: zh-TW
+url: "https://lin55357.github.io"
+baseurl: "/trip-to-Tokyo"
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+header_pages:
+  - about.md
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
