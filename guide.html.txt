@@ -38,10 +38,36 @@
     header {
       background: linear-gradient(135deg, #0b132b 0%, #1c2541 55%, #27375d 100%);
       color: #fff;
-      padding: 30px 20px 26px;
+      padding: 36px 20px 26px;
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+
+    /* 版本切換按鈕 */
+    .version-switch {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px 11px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(243, 208, 107, 0.55);
+      color: #f6dc8b;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: none;
+      backdrop-filter: blur(6px);
+      transition: all 0.2s;
+    }
+
+    .version-switch:hover {
+      background: rgba(197, 155, 39, 0.28);
+      color: #ffffff;
     }
 
     header::before {
@@ -431,32 +457,3 @@
     }
 
     .ov-title {
-      font-weight: 700;
-      color: #1d3557;
-      font-size: 15px;
-    }
-
-    .ov-hotel {
-      font-size: 12px;
-      background: var(--accent-gold-bg);
-      color: #87630d;
-      border: 1px solid rgba(197, 155, 39, 0.3);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-
-    .ov-route {
-      font-size: 13.5px;
-      color: #36455e;
-    }
-
-    /* Expense Tracker */
-    .exp-summary {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .exp-stat {
