@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>東京聖誕冬旅手冊｜秋楓銀杏・鎌倉・聖誕點燈 5天4夜</title>
+  <style>
+    :root {
+      --bg: #f4f6fa;             /* 冬夜雪霧底色 */
+      --surface: #ffffff;        /* 純白卡片 */
+      --surface-soft: #eaeff7;   /* 冰藍淺底 */
+      --ink: #162238;            /* 午夜深藍文字 */
+      --ink-light: #52617a;      /* 灰藍輔助文字 */
+      --accent: #1d3557;         /* 聖誕深寶藍 */
+      --accent-gold: #c59b27;    /* 香檳金 */
+      --accent-gold-bg: #fcf6e6; /* 暖金淺底 */
+      --accent-green: #2d5a4c;   /* 聖誕冷杉綠 */
+      --border: #d8e0ec;
+      --shadow: 0 6px 20px rgba(22, 34, 56, 0.07);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      padding-bottom: 84px;
+    }
+
+    /* Header - 聖誕夜空藍金漸層 */
+    header {
+      background: linear-gradient(135deg, #0b132b 0%, #1c2541 55%, #27375d 100%);
+      color: #fff;
+      padding: 30px 20px 26px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "✦  ✧  ✦";
+      display: block;
+      font-size: 11px;
+      letter-spacing: 8px;
+      color: #e5c158;
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #8e6c13, #f3d06b, #c59b27, #f3d06b, #8e6c13);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border: 1px solid rgba(243, 208, 107, 0.55);
+      border-radius: 20px;
+      margin-bottom: 10px;
+      color: #f6dc8b;
+      background: rgba(197, 155, 39, 0.12);
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    header p {
+      font-size: 13px;
+      color: #cbd5e6;
+    }
+
+    /* Countdown Box */
+    .countdown-card {
+      margin: 18px auto 0;
+      max-width: 460px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(243, 208, 107, 0.35);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-label {
+      font-size: 12px;
+      color: #f6dc8b;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .cd-item {
+      text-align: center;
+      min-width: 48px;
+    }
+
+    .cd-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      text-shadow: 0 0 10px rgba(243, 208, 107, 0.4);
+    }
+
+    .cd-unit {
+      font-size: 11px;
+      color: #b8c4d9;
+    }
+
+    /* Sticky Top Navigation */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(244, 246, 250, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink-light);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .nav-btn.active {
+      background: #162238;
+      color: #f6dc8b;
+      border-color: #c59b27;
+      box-shadow: 0 2px 8px rgba(22, 34, 56, 0.18);
+    }
+
+    .nav-btn.expense-tab.active {
+      background: #9e7818;
+      color: #ffffff;
+      border-color: #9e7818;
+    }
+
+    /* Container */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards & Typography */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--surface-soft);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .tag-blue { background: #e6edf8; color: #1d3557; }
+    .tag-gold { background: var(--accent-gold-bg); color: #967012; border: 1px solid rgba(197, 155, 39, 0.25); }
+    .tag-green { background: #e4f0ec; color: var(--accent-green); }
+
+    .info-list {
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .info-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 8px;
+    }
+
+    .info-list li::before {
+      content: "✦";
+      font-size: 10px;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent-gold);
+    }
+
+    /* Day Summary Banner */
+    .day-banner {
+      background: linear-gradient(135deg, #162238 0%, #243757 100%);
+      border-left: 4px solid var(--accent-gold);
+      padding: 15px 17px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .day-banner h2 {
+      font-size: 17px;
+      margin-bottom: 5px;
+      color: #f6dc8b;
+    }
+
+    .day-banner p {
+      font-size: 13px;
+      color: #d8e1f0;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 18px;
+      border-left: 2px solid #cbd6e8;
+      margin-left: 6px;
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      box-shadow: 0 2px 8px rgba(22, 34, 56, 0.04);
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -25px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4a6fa5;
+      border: 2px solid var(--bg);
+    }
+
+    .tl-item.highlight {
+      border-color: rgba(197, 155, 39, 0.55);
+      background: linear-gradient(to right, #ffffff, #fffdf7);
+    }
+
+    .tl-item.highlight::before {
+      background: var(--accent-gold);
+      width: 12px;
+      height: 12px;
+      left: -26px;
+      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.2);
+    }
+
+    .tl-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: #9e7818;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .tl-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .tl-desc {
+      font-size: 13.5px;
+      color: #36455e;
+    }
+
+    /* Story Accordion */
+    .story-box {
+      margin-top: 10px;
+      background: var(--accent-gold-bg);
+      border: 1px solid rgba(197, 155, 39, 0.35);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .story-box summary {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #87630d;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .story-box summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .story-box summary::after {
+      content: "展開小故事 ＋";
+      font-size: 11px;
+      color: #9e7818;
+    }
+
+    .story-box[open] summary::after {
+      content: "收合 －";
+    }
+
+    .story-content {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(197, 155, 39, 0.4);
+      font-size: 13px;
+      color: #463c26;
+      line-height: 1.6;
+    }
+
+    /* Restaurant Grid */
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 560px) {
+      .food-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .food-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 13px;
+      background: #f9fbff;
+    }
+
+    .food-name {
+      font-weight: 700;
+      font-size: 14px;
+      margin: 4px 0;
+      color: var(--ink);
+    }
+
+    .food-meta {
+      font-size: 12.5px;
+      color: var(--ink-light);
+    }
+
+    /* Overview Table */
+    .overview-day {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .overview-day:last-child {
+      border-bottom: none;
+    }
+
+    .ov-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .ov-title {
+      font-weight: 700;
+      color: #1d3557;
+      font-size: 15px;
+    }
+
+    .ov-hotel {
+      font-size: 12px;
+      background: var(--accent-gold-bg);
+      color: #87630d;
+      border: 1px solid rgba(197, 155, 39, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .ov-route {
+      font-size: 13.5px;
+      color: #36455e;
+    }
+
+    /* Expense Tracker */
+    .exp-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .exp-stat {
